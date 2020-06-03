@@ -1,0 +1,55 @@
+package Test;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Updown {
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		int count = 5;
+		int answer = (int)(Math.random()*50) +1;
+		
+		System.out.println("-------------------------------------------------");
+		System.out.println("\t<<Updown Game world>>");
+		System.out.println("-------------------------------------------------");
+
+		System.out.println("Try to guess the number!(1~50)\n");
+		System.out.println("You have 5 chances..");
+
+        while(count>=1){
+            //if(count<1)	break;
+        	try {
+        		System.out.print("Input number > ");
+        		int sn = sc.nextInt();
+        		System.out.println("");
+
+        		if(answer != sn && answer > sn){
+        			count--;
+        			System.out.println("Wrong, the specified number is a larger number.");
+        			System.out.println("You have "+ count + " chances left.");
+                
+        		}else if(answer != sn && answer < sn){
+        			count--;
+        			System.out.println("Wrong, the specified number is a smaller number.");
+        			System.out.println("You have "+ count + " chances left.");
+        		
+        		}else if(answer == sn){
+        			System.out.println("That's correct!");
+        			break;
+        		}
+			}
+    		catch(InputMismatchException e) {
+    	         //초기화 시키기
+    	         sc = new Scanner(System.in);
+    	         System.out.println("Please enter a number.\n");
+    	      }
+		}
+
+		if(count<1){
+			System.out.println("\nThe answer is "+answer+".");
+			System.out.println("-----!!!! Mission Failed !!!!-----");
+		}else
+			System.out.println("-----!!!! Mission Success !!!!-----");
+        
+	}
+}
